@@ -49,6 +49,8 @@ function Checkout() {
 
   async function handleClick() {
     setToken(user.token);
+    console.log(user);
+    console.log(`token: ${user.token}`);
     const newSale = await postAPI('/customer/checkout', {
       userId: user.id,
       sellerId: seller[0].id,
@@ -57,7 +59,7 @@ function Checkout() {
       deliveryNumber: addressNumber,
       saleDate: Date.now(),
       products: cart,
-    });
+    }, user.token);
     history.push(`/customer/orders/${newSale.id}`);
     remove('cart');
   }

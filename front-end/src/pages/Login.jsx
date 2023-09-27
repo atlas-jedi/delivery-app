@@ -17,6 +17,7 @@ function Login() {
     setPassword,
     invalidLogin,
     setInvalidLogin,
+    user,
     setUser,
   } = useContext(DeliveryContext);
 
@@ -44,9 +45,9 @@ function Login() {
       password,
     };
     try {
-      const setLogin = await postAPI('/user/login', u);
-      const { message } = setLogin;
+      const { message } = await postAPI('/user/login', u);
       setUser(message);
+      console.log(user);
       save('user', message);
       defineRoute(message.role);
     } catch (err) {

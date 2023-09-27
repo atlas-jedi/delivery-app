@@ -13,8 +13,12 @@ const requestAPI = async (endpoint) => {
   return data;
 };
 
-const postAPI = async (endpoint, obj) => {
-  const { data } = await api.post(endpoint, obj);
+const postAPI = async (endpoint, obj, userToken) => {
+  const { data } = await api.post(endpoint, obj, {
+    headers: {
+      Authorization: userToken,
+    },
+  });
   return data;
 };
 
