@@ -72,8 +72,6 @@ function Login() {
     }
   }, [email, password, isDisabled, setIsDisabled]);
 
-  // const handleSubmit = () => localStorage.setItem('user', JSON.stringify({ email }));
-
   return (
     <main className="login-container">
       <div className="logo-container">
