@@ -6,10 +6,7 @@
 }
 
 .checkout-title {
-  margin-bottom: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 3px;
+  margin-bottom: 20px;
 }
 
 .checkout-total {
@@ -25,14 +22,6 @@
   width: 200px;
 }
 
-.finish-button-container {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  text-align: center;
-}
-
 .finish-button {
   background-color: #036b52;
   border-radius: 10px;
@@ -44,14 +33,24 @@
   width: 300px;
 }
 
-.input-checkout {
+.checkout-page input {
   padding: 10px 30px 10px 10px;
   text-align: center;
+}
+
+.input-checkout {
   width: 200px;
 }
 
 .input-address {
-  padding: 10px 30px 10px 10px;
-  text-align: center;
   width: 500px;
+}
+
+.checkout-page form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 240px;
+  align-items: center;
+  justify-items: center;
 }

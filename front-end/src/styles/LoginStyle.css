@@ -5,7 +5,7 @@
   margin-top: 100px;
 }
 
-form {
+.login-container form {
   align-items: center;
   background-color: #eaf1ef;
   border: 1px solid #b1c2be;
@@ -20,11 +20,11 @@ form {
   width: 250px;
 }
 
-form * {
+.login-container form * {
   margin-bottom: 5px;
 }
 
-form input {
+.login-container form input {
   background: white;
   border: 1px solid #001813;
   border-radius: 5px;
@@ -33,7 +33,7 @@ form input {
   width: 200px;
 }
 
-form button {
+.login-container form button {
   border: none;
   border-radius: 5px;
   cursor: pointer;

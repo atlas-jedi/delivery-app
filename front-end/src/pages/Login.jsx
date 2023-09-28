@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import DeliveryContext from '../contexts/DeliveryContext';
 import validationInputs from '../utils/validationInputs';
 import { postAPI } from '../services/deliveryAPI';
-import { read, save } from '../services/localStorage';
+import { save } from '../services/localStorage';
 import '../styles/LoginStyle.css';
 import OnlineDelivery from '../images/OnlineDelivery.png';
 
@@ -23,44 +23,34 @@ function Login() {
 
   const history = useHistory();
 
-  const defineRoute = (role) => {
-    switch (role) {
-    case 'customer':
-      history.push('/customer/products');
-      break;
-    case 'seller':
-      history.push('/seller/orders');
-      break;
-    case 'administrator':
-      history.push('/admin/manage');
-      break;
-    default:
-      break;
-    }
-  };
-
   const UserLogin = async () => {
-    const u = {
-      email,
-      password,
-    };
+    const userForRequest = { email, password };
     try {
-      const { message } = await postAPI('/user/login', u);
-      setUser(message);
-      console.log(user);
-      save('user', message);
-      defineRoute(message.role);
+      const { userResponse } = await postAPI('/user/login', userForRequest);
+      setUser(userResponse);
+      save('user', userResponse);
     } catch (err) {
       setInvalidLogin(true);
     }
   };
 
   useEffect(() => {
-    const getLocalStorage = read('user');
-    if (getLocalStorage) {
-      defineRoute(getLocalStorage.role);
+    if (user.role) {
+      switch (user.role) {
+      case 'customer':
+        history.push('/customer/products');
+        break;
+      case 'seller':
+        history.push('/seller/orders');
+        break;
+      case 'administrator':
+        history.push('/admin/manage');
+        break;
+      default:
+        break;
+      }
     }
-  }, []);
+  }, [user, history]);
 
   useEffect(() => {
     const validationGeneral = validationInputs(email, password);
@@ -71,8 +61,6 @@ function Login() {
       setIsDisabled(true);
     }
   }, [email, password, isDisabled, setIsDisabled]);
-
-  // const handleSubmit = () => localStorage.setItem('user', JSON.stringify({ email }));
 
   return (
     <main className="login-container">
