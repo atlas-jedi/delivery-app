@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function TableCheckout({ items, removeItem }) {
-  console.log(items);
   return (
     <table className="details-table">
       <thead>
